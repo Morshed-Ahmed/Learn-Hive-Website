@@ -13,15 +13,17 @@ import React, { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
 
   const signUp = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -38,17 +40,17 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setLoading(false);
+    setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // if (currentUser?.emailVerified) {
-      setUser(currentUser);
-      setLoading(false);
-      // console.log(currentUser);
-      // }
+      if (currentUser === null || currentUser?.emailVerified) {
+        setUser(currentUser);
+        setLoading(false);
+        // console.log(currentUser);
+      }
     });
 
     return () => unsubscribe();

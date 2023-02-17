@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import { ImGoogle2 } from "react-icons/im";
+import { FaFacebookSquare } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+import { FaTwitterSquare } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -19,9 +23,10 @@ const Navbar = () => {
   return (
     <div className=" bg-base-100 flex flex-col mx-4 mt-3">
       <div className="flex justify-between items-center mx-2">
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <Link to={"/"}>
-            <svg
+            <ImGoogle2 />
+            {/* <svg
               fill="#969696"
               height="25px"
               width="25px"
@@ -44,10 +49,11 @@ const Navbar = () => {
                 <title>google</title>{" "}
                 <path d="M9.6 25.6c-5.28 0-9.6-4.32-9.6-9.6s4.32-9.6 9.6-9.6c2.56 0 4.96 1 6.8 2.8 0.32 0.32 0.32 0.88 0 1.2s-0.88 0.32-1.2 0c-1.48-1.48-3.48-2.32-5.6-2.32-4.36 0-7.92 3.56-7.92 7.92s3.56 7.92 7.92 7.92c4.080 0 7.44-3.080 7.88-7.040h-7.88c-0.48 0-0.84-0.36-0.84-0.84s0.36-0.84 0.84-0.84h8.76c0.48 0 0.84 0.36 0.84 0.84 0 5.24-4.32 9.56-9.6 9.56z" />{" "}
               </g>
-            </svg>
+            </svg> */}
           </Link>
           <Link to={"/"}>
-            <svg
+            <FaFacebookSquare size={18} />
+            {/* <svg
               fill="#969696"
               height="20px"
               width="20px"
@@ -70,10 +76,11 @@ const Navbar = () => {
                 {" "}
                 <path d="M-260.9,327.8c0-10.3,9.2-14,19.5-14c10.3,0,21.3,3.2,21.3,3.2l6.6-39.2c0,0-14-4.8-47.4-4.8c-20.5,0-32.4,7.8-41.1,19.3 c-8.2,10.9-8.5,28.4-8.5,39.7v25.7H-337V396h26.5v133h49.6V396h39.3l2.9-38.3h-42.2V327.8z"></path>{" "}
               </g>
-            </svg>
+            </svg> */}
           </Link>
           <Link to={"/"}>
-            <svg
+            <FaTwitterSquare size={18} />
+            {/* <svg
               fill="#969696"
               width="25px"
               height="25px"
@@ -97,11 +104,11 @@ const Navbar = () => {
 
                 <path d="M26,41.5a1,1,0,0,1-1-1v-17a1,1,0,0,1,1.54-.84l14,9a1,1,0,0,1,0,1.71l-14,8A1,1,0,0,1,26,41.5Zm1-16.17V38.78l11.07-6.33Z" />
               </g>
-            </svg>
+            </svg> */}
           </Link>
-
           <Link className="ml-1" to={"/"}>
-            <svg
+            <IoLogoYoutube size={20} />
+            {/* <svg
               fill="#969696"
               width="20px"
               height="20px"
@@ -125,7 +132,7 @@ const Navbar = () => {
                   fill-rule="evenodd"
                 />{" "}
               </g>
-            </svg>
+            </svg> */}
           </Link>
         </div>
         <div className="flex gap-3">

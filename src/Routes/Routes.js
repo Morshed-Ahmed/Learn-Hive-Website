@@ -4,7 +4,11 @@ import ForgotPassword from "../Pages/Authentication/ForgotPassword/ForgotPasswor
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import Home from "../Pages/Home/Home/Home";
-import Courses from "../Pages/RoutePages/Courses/Courses";
+import AllCourses from "../Pages/RoutePages/Courses/AllCourses/AllCourses";
+import Courses from "../Pages/RoutePages/Courses/Courses/Courses";
+import CoursesDetails from "../Pages/RoutePages/Courses/CoursesDetails/CoursesDetails";
+import CoursesHome from "../Pages/RoutePages/Courses/CoursesHome";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +35,25 @@ const router = createBrowserRouter([
   },
   {
     path: "/courses",
-    element: <Courses />,
+    element: (
+      <PrivateRoute>
+        <CoursesHome />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/courses",
+        element: <AllCourses />,
+      },
+      {
+        path: "/courses/:name",
+        element: <Courses />,
+      },
+      {
+        path: "/courses/details/:id",
+        element: <CoursesDetails />,
+      },
+    ],
   },
 ]);
 

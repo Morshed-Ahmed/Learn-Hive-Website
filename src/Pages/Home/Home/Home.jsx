@@ -3,7 +3,7 @@ import Banner from "../Banner/Banner";
 
 const Home = () => {
   return (
-    <div className="lg:w-[1100px] mx-auto">
+    <div className="lg:max-w-[1100px] mx-auto">
       <Banner />
     </div>
   );
