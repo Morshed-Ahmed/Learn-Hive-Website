@@ -4,10 +4,12 @@ import ForgotPassword from "../Pages/Authentication/ForgotPassword/ForgotPasswor
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import Home from "../Pages/Home/Home/Home";
+import Blog from "../Pages/RoutePages/Blog/Blog";
 import AllCourses from "../Pages/RoutePages/Courses/AllCourses/AllCourses";
 import Courses from "../Pages/RoutePages/Courses/Courses/Courses";
 import CoursesDetails from "../Pages/RoutePages/Courses/CoursesDetails/CoursesDetails";
 import CoursesHome from "../Pages/RoutePages/Courses/CoursesHome";
+import Faq from "../Pages/RoutePages/Faq/Faq";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
         element: <CoursesDetails />,
       },
     ],
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
+  },
+  {
+    path: "/faq",
+    element: <Faq />,
   },
 ]);
 
