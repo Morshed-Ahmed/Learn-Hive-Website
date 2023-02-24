@@ -7,7 +7,7 @@ import Category from "./Category/Category";
 const CoursesHome = () => {
   return (
     <div>
-      <div>
+      <div className="sticky top-0 z-50">
         <Navbar />
       </div>
       <div className="lg:max-w-[1100px] mx-auto">

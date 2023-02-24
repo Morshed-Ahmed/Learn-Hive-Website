@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
 
   const {
     register,
@@ -21,9 +22,21 @@ const Login = () => {
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        // navigate(from, { replace: true });
+        // const user = userCredential.user;
+        // console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+
+  const handleGoogle = () => {
+    googleSignIn()
+      .then((userCredential) => {
+        // const user = userCredential.user;
+        // console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -81,6 +94,13 @@ const Login = () => {
                 </div>
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Login</button>
+                </div>
+                <div className="flex justify-center mt-2">
+                  <FcGoogle
+                    className="cursor-pointer"
+                    onClick={handleGoogle}
+                    size={35}
+                  />
                 </div>
               </div>
             </div>

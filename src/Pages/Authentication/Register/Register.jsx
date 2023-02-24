@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const Register = () => {
-  const { signUp, EmailVerification, updateUser } = useContext(AuthContext);
+  const { signUp, EmailVerification, updateUser, user } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  console.log(user);
 
   const {
     register,
@@ -21,6 +23,7 @@ const Register = () => {
         emailVerification();
         const userInfo = {
           displayName: data.displayName,
+          photoURL: data.imageUrl,
         };
         updateUser(userInfo)
           .then(() => {
@@ -75,6 +78,19 @@ const Register = () => {
                     className="input input-bordered"
                   />
                 </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Image Url</span>
+                  </label>
+                  <input
+                    type="text"
+                    {...register("imageUrl", { required: true })}
+                    placeholder="Image Url"
+                    className="input input-bordered"
+                  />
+                </div>
+
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -86,6 +102,7 @@ const Register = () => {
                     className="input input-bordered"
                   />
                 </div>
+
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
@@ -97,8 +114,9 @@ const Register = () => {
                     className="input input-bordered"
                   />
                 </div>
+
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <button className="btn btn-primary">Sign Up</button>
                 </div>
               </div>
             </div>

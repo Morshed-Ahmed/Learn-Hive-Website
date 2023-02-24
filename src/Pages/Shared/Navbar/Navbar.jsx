@@ -8,7 +8,7 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { themeChange } from "theme-change";
 
 const Navbar = () => {
-  const { user, logOut, loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const [theme, setTheme] = useState("Color Theme");
   useEffect(() => {}, [setTheme]);
@@ -29,8 +29,8 @@ const Navbar = () => {
       });
   };
   return (
-    <div className=" bg-base-100 flex flex-col mx-4 mt-3">
-      <div className="flex justify-between items-center mx-2 ">
+    <div className="sticky top-0 z-50 bg-base-100 flex flex-col mx-4 mt-3">
+      <div className=" flex justify-between items-center mx-2 ">
         <div className="flex items-center gap-3">
           <Link to={"/"}>
             <ImGoogle2 />
@@ -50,8 +50,8 @@ const Navbar = () => {
           <Link to={"/register"}>Register</Link>
         </div>
       </div>
-      <div className="divider"></div>
-      <div className="navbar bg-base-100">
+      <div className="divider "></div>
+      <div className=" navbar  bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -75,47 +75,24 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to={"/"}>Item 1</Link>
-              </li>
-              <li>
                 <Link to={"/courses"}>Courses</Link>
               </li>
-              <li tabIndex={0}>
-                <a href="/" className="justify-between">
-                  Parent
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <Link to={"/courses"}>Courses</Link>
-                  </li>
-                  <li>
-                    <Link to={"/blog"}>Blog</Link>
-                  </li>
-                  <li>
-                    <Link to={"/faq"}>FAQ</Link>
-                  </li>
-                  <li>
-                    <Link to={"/"}>Item 1</Link>
-                  </li>
-                </ul>
-              </li>
               <li>
-                <Link to={"/"}>Item 1</Link>
+                <Link to={"/blog"}>Blogs</Link>
               </li>
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost normal-case text-xl">
+          {/* <a href="/" className="btn btn-ghost normal-case text-xl">
             LearnHive
-          </a>
+          </a> */}
+
+          <Link to={"/"}>
+            <img
+              className="w-40"
+              src="https://i.ibb.co/HFkBNSr/learn-hive-low-resolution-logo-color-on-transparent-background.png"
+              alt=""
+            />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -134,19 +111,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {/* {user?.emailVerified ? (
-            <>
-              <div onClick={handleLogOut} className="btn">
-                Log Out
-              </div>
-            </>
-          ) : (
-            <>
-              <Link className="btn">Get started</Link>
-            </>
-          )} */}
-
-          <ul class="menu menu-horizontal   p-0">
+          <ul className="menu menu-horizontal p-0">
             <label
               // data-act-class="ACTIVECLASS"
               // data-toggle-theme="dark,light"
@@ -182,10 +147,10 @@ const Navbar = () => {
             <li
               className="w-44 hidden lg:flex  z-20"
               data-choose-theme
-              tabindex="0"
+              // tabindex="0"
             >
               <NavLink className="w-full flex justify-between">
-                <Link
+                <div
                 // data-set-theme=""
                 // setTheme=" System Default"
                 // data-act-class="ACTIVECLASS"
@@ -193,7 +158,7 @@ const Navbar = () => {
                 // className="hover:  hover:text-base-100 "
                 >
                   {theme}
-                </Link>
+                </div>
                 <svg
                   className="fill-current bg-base-300 lg:rounded-full  lg:w-6 lg:h-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -258,12 +223,12 @@ const Navbar = () => {
           {user?.emailVerified && (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className=" m-1">
-                <div className="avatar">
+                <div
+                  className="avatar tooltip  tooltip-bottom"
+                  data-tip="Settings"
+                >
                   <div className="bg-neutral-focus text-neutral-content flex text-center items-center lg:w-10 xs:w-7 rounded">
-                    <img
-                      src="https://i.ibb.co/5njJRMx/20200228-185628-removebg-preview-1.png"
-                      alt=""
-                    />
+                    <img src={user?.photoURL} alt="" />
                     {/* <span className="text-3xl ">K</span> */}
                   </div>
                 </div>
@@ -279,7 +244,7 @@ const Navbar = () => {
                 </div>
 
                 <li>
-                  <a>Item 1</a>
+                  <a href="/">Item 1</a>
                 </li>
 
                 <li onClick={handleLogOut}>
