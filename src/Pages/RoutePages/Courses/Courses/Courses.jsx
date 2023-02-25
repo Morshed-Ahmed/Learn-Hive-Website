@@ -8,7 +8,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5040/courses/${name}`)
+    fetch(`https://learn-hive-website-api.vercel.app/courses/${name}`)
       .then((res) => res.json())
       .then((data) => setCourses(data.data));
   }, [name]);

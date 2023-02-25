@@ -12,7 +12,7 @@ const CoursesDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5040/courses/single/${id}`)
+    fetch(`https://learn-hive-website-api.vercel.app/courses/single/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data);
