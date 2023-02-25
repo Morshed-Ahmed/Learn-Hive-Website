@@ -80,6 +80,9 @@ const Navbar = () => {
               <li>
                 <Link to={"/blog"}>Blogs</Link>
               </li>
+              <li>
+                <Link to={"/faq"}>FAQs</Link>
+              </li>
             </ul>
           </div>
           {/* <a href="/" className="btn btn-ghost normal-case text-xl">
@@ -104,9 +107,6 @@ const Navbar = () => {
             </li>
             <li>
               <Link to={"/faq"}>FAQs</Link>
-            </li>
-            <li>
-              <Link to={"/"}>Item 1</Link>
             </li>
           </ul>
         </div>
